@@ -2,75 +2,256 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASHER LABS</title>
+
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #070707;
+            --panel: #0d0d0d;
+            --line: rgba(255, 255, 255, 0.06);
+            --soft: rgba(255, 255, 255, 0.45);
+            --text: rgba(255, 255, 255, 0.92);
+            --cyan: #00dfd8;
+            --blue: #007cf0;
         }
 
         body {
-            background-color: #0a0a0a;
+            background: radial-gradient(circle at top,
+                    rgba(0, 124, 240, 0.08),
+                    transparent 35%),
+                radial-gradient(circle at bottom,
+                    rgba(0, 223, 216, 0.05),
+                    transparent 40%),
+                var(--bg);
+
+            color: var(--text);
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             overflow: hidden;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+            font-family: Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
         }
 
-        .logo-container {
+        /* Atmospheric grain */
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0.035;
+            background-image:
+                repeating-linear-gradient(0deg,
+                    rgba(255, 255, 255, 0.03) 0px,
+                    rgba(255, 255, 255, 0.03) 1px,
+                    transparent 1px,
+                    transparent 2px);
+
+            pointer-events: none;
+        }
+
+        /* Technical grid */
+        .grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--line) 1px, transparent 1px);
+
+            background-size: 64px 64px;
+            mask-image: radial-gradient(circle at center,
+                    black 25%,
+                    transparent 80%);
+
+            opacity: 0.5;
+        }
+
+        /* Network topology */
+        .network {
+            position: absolute;
+            width: 900px;
+            height: 900px;
+            border-radius: 50%;
+
+            border: 1px solid rgba(255, 255, 255, 0.03);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            animation: rotate 80s linear infinite;
+        }
+
+        .network::before,
+        .network::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .network::before {
+            width: 620px;
+            height: 620px;
+        }
+
+        .network::after {
+            width: 320px;
+            height: 320px;
+        }
+
+        .node {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+            box-shadow:
+                0 0 20px rgba(255, 255, 255, 0.3),
+                0 0 40px rgba(0, 223, 216, 0.15);
+        }
+
+        .n1 {
+            top: 160px;
+            left: 180px;
+        }
+
+        .n2 {
+            top: 280px;
+            right: 140px;
+            background: var(--cyan);
+        }
+
+        .n3 {
+            bottom: 180px;
+            left: 240px;
+            background: var(--blue);
+        }
+
+        .n4 {
+            bottom: 120px;
+            right: 220px;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            z-index: 10;
+
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 24px;
-            animation: fadeIn 1.5s ease-out;
+            gap: 22px;
+
+            animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        svg {
-            width: 120px;
-            height: 120px;
-            filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.08));
-            transition: filter 0.5s ease;
+        .mark {
+            width: 72px;
+            height: 72px;
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        svg:hover {
-            filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.2));
+        .mark::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+
+            background:
+                linear-gradient(135deg,
+                    rgba(0, 223, 216, 0.9),
+                    rgba(0, 124, 240, 0.9));
+
+            opacity: 0.08;
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            backdrop-filter: blur(20px);
+        }
+
+        .mark span {
+            font-size: 1rem;
+            letter-spacing: 0.18em;
+            font-weight: 600;
+            color: white;
+            opacity: 0.92;
         }
 
         h1 {
-            color: #ffffff;
-            font-size: 0.9rem;
-            font-weight: 400;
-            letter-spacing: 0.5em;
-            text-indent: 0.5em;
-            opacity: 0.7;
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.72em;
+            text-indent: 0.72em;
             text-transform: uppercase;
+            color: white;
+        }
+
+        h1 strong {
+            font-weight: 600;
+
+            background: linear-gradient(90deg,
+                    var(--cyan),
+                    var(--blue));
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 0.74rem;
+            letter-spacing: 0.34em;
+            text-transform: uppercase;
+            color: var(--soft);
         }
 
         .footer {
             position: absolute;
-            bottom: 30px;
-            font-size: 0.65rem;
-            color: #ffffff;
-            opacity: 0.15;
-            letter-spacing: 0.2em;
+            bottom: 34px;
+            font-size: 0.62rem;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.22);
         }
 
-        @keyframes fadeIn {
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeUp {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(20px);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0px);
             }
         }
     </style>
@@ -78,23 +259,31 @@
 
 <body>
 
-    <div class="logo-container">
-        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 10L90 33.1V79.4L50 90L10 79.4V33.1L50 10Z" stroke="#ffffff" stroke-width="1.5"
-                stroke-opacity="0.2" stroke-linejoin="round" />
+    <div class="grid"></div>
 
-            <path d="M50 25L80 42.3V67.7L50 80L20 67.7V42.3L50 25Z" stroke="#ffffff" stroke-width="2.5"
-                stroke-linejoin="round" stroke-linecap="round" />
-
-            <circle cx="50" cy="52.5" r="4" fill="#ffffff" />
-            <line x1="50" y1="25" x2="50" y2="48.5" stroke="#ffffff" stroke-width="2" stroke-dasharray="3 3" />
-        </svg>
-
-        <h1>Asher Labs</h1>
+    <div class="network">
+        <div class="node n1"></div>
+        <div class="node n2"></div>
+        <div class="node n3"></div>
+        <div class="node n4"></div>
     </div>
 
+    <main class="hero">
+
+        <div class="mark">
+            <span>AL</span>
+        </div>
+
+        <h1>ASHER <strong>LABS</strong></h1>
+
+        <p>
+            Infrastructure • Automation • Systems
+        </p>
+
+    </main>
+
     <div class="footer">
-        Private Ecosystem
+        Private Infrastructure Ecosystem
     </div>
 
 </body>
