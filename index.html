@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>ASHER LABS</title>
 
     <style>
@@ -14,29 +15,37 @@
         }
 
         :root {
-            --bg: #070707;
-            --panel: #0d0d0d;
-            --line: rgba(255, 255, 255, 0.06);
-            --soft: rgba(255, 255, 255, 0.45);
+            --bg: #050505;
             --text: rgba(255, 255, 255, 0.92);
+            --muted: rgba(255, 255, 255, 0.34);
+            --line: rgba(255, 255, 255, 0.04);
+
             --cyan: #00dfd8;
             --blue: #007cf0;
         }
 
+        html,
         body {
-            background: radial-gradient(circle at top,
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            overflow: hidden;
+
+            background:
+                radial-gradient(circle at top,
                     rgba(0, 124, 240, 0.08),
                     transparent 35%),
+
                 radial-gradient(circle at bottom,
                     rgba(0, 223, 216, 0.05),
                     transparent 40%),
+
                 var(--bg);
 
-            color: var(--text);
-            height: 100vh;
-            overflow: hidden;
-
-            font-family: Inter,
+            font-family:
+                Inter,
                 -apple-system,
                 BlinkMacSystemFont,
                 "Segoe UI",
@@ -49,12 +58,15 @@
             position: relative;
         }
 
-        /* Atmospheric grain */
+        /* subtle grain */
         body::before {
             content: "";
+
             position: absolute;
             inset: 0;
-            opacity: 0.035;
+
+            opacity: 0.025;
+
             background-image:
                 repeating-linear-gradient(0deg,
                     rgba(255, 255, 255, 0.03) 0px,
@@ -65,27 +77,32 @@
             pointer-events: none;
         }
 
-        /* Technical grid */
+        /* grid */
         .grid {
             position: absolute;
             inset: 0;
+
             background-image:
                 linear-gradient(var(--line) 1px, transparent 1px),
                 linear-gradient(90deg, var(--line) 1px, transparent 1px);
 
-            background-size: 64px 64px;
-            mask-image: radial-gradient(circle at center,
-                    black 25%,
+            background-size: 56px 56px;
+
+            mask-image:
+                radial-gradient(circle at center,
+                    black 20%,
                     transparent 80%);
 
-            opacity: 0.5;
+            opacity: 0.45;
         }
 
-        /* Network topology */
-        .network {
+        /* orbital structure */
+        .orbital {
             position: absolute;
-            width: 900px;
-            height: 900px;
+
+            width: min(82vw, 560px);
+            height: min(82vw, 560px);
+
             border-radius: 50%;
 
             border: 1px solid rgba(255, 255, 255, 0.03);
@@ -94,61 +111,68 @@
             align-items: center;
             justify-content: center;
 
-            animation: rotate 80s linear infinite;
+            animation: rotate 90s linear infinite;
         }
 
-        .network::before,
-        .network::after {
+        .orbital::before,
+        .orbital::after {
             content: "";
+
             position: absolute;
             border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.04);
+
+            border: 1px solid rgba(255, 255, 255, 0.035);
         }
 
-        .network::before {
-            width: 620px;
-            height: 620px;
+        .orbital::before {
+            width: 68%;
+            height: 68%;
         }
 
-        .network::after {
-            width: 320px;
-            height: 320px;
+        .orbital::after {
+            width: 34%;
+            height: 34%;
         }
 
+        /* nodes */
         .node {
             position: absolute;
-            width: 8px;
-            height: 8px;
+
+            width: 7px;
+            height: 7px;
+
             border-radius: 50%;
+
             background: white;
+
             box-shadow:
-                0 0 20px rgba(255, 255, 255, 0.3),
-                0 0 40px rgba(0, 223, 216, 0.15);
+                0 0 12px rgba(255, 255, 255, 0.25),
+                0 0 26px rgba(0, 223, 216, 0.12);
         }
 
         .n1 {
-            top: 160px;
-            left: 180px;
+            top: 24%;
+            left: 18%;
         }
 
         .n2 {
-            top: 280px;
-            right: 140px;
+            top: 44%;
+            right: 17%;
             background: var(--cyan);
         }
 
         .n3 {
-            bottom: 180px;
-            left: 240px;
+            bottom: 22%;
+            left: 31%;
             background: var(--blue);
         }
 
         .n4 {
-            bottom: 120px;
-            right: 220px;
+            bottom: 12%;
+            right: 32%;
         }
 
-        /* Hero */
+        /* hero */
         .hero {
             position: relative;
             z-index: 10;
@@ -156,60 +180,75 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 22px;
 
-            animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+            gap: 18px;
+
+            padding-inline: 24px;
+
+            text-align: center;
+
+            animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        /* minimal mark */
         .mark {
-            width: 72px;
-            height: 72px;
-            position: relative;
+            width: 62px;
+            height: 62px;
+
+            border-radius: 18px;
 
             display: flex;
             align-items: center;
             justify-content: center;
-        }
 
-        .mark::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 18px;
+            position: relative;
+
+            overflow: hidden;
 
             background:
                 linear-gradient(135deg,
-                    rgba(0, 223, 216, 0.9),
-                    rgba(0, 124, 240, 0.9));
+                    rgba(0, 223, 216, 0.08),
+                    rgba(0, 124, 240, 0.08));
 
-            opacity: 0.08;
-
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border:
+                1px solid rgba(255, 255, 255, 0.06);
 
             backdrop-filter: blur(20px);
+
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.03),
+                0 0 30px rgba(0, 223, 216, 0.06);
         }
 
         .mark span {
-            font-size: 1rem;
-            letter-spacing: 0.18em;
+            font-size: 0.9rem;
+
             font-weight: 600;
-            color: white;
-            opacity: 0.92;
+
+            letter-spacing: 0.18em;
+
+            color: rgba(255, 255, 255, 0.92);
         }
 
         h1 {
-            font-size: 1rem;
+            font-size: clamp(0.72rem, 2vw, 0.95rem);
+
             font-weight: 300;
-            letter-spacing: 0.72em;
-            text-indent: 0.72em;
+
             text-transform: uppercase;
+
+            letter-spacing: clamp(0.32em, 1.6vw, 0.58em);
+
+            text-indent: clamp(0.32em, 1.6vw, 0.58em);
+
             color: white;
         }
 
         h1 strong {
             font-weight: 600;
 
-            background: linear-gradient(90deg,
+            background:
+                linear-gradient(90deg,
                     var(--cyan),
                     var(--blue));
 
@@ -218,19 +257,35 @@
         }
 
         p {
-            font-size: 0.74rem;
-            letter-spacing: 0.34em;
+            font-size: clamp(0.52rem, 1.7vw, 0.68rem);
+
             text-transform: uppercase;
-            color: var(--soft);
+
+            letter-spacing: clamp(0.18em, 0.8vw, 0.28em);
+
+            color: var(--muted);
+
+            line-height: 1.8;
         }
 
         .footer {
             position: absolute;
-            bottom: 34px;
-            font-size: 0.62rem;
-            letter-spacing: 0.3em;
+
+            bottom: 26px;
+
+            width: 100%;
+
+            text-align: center;
+
+            padding-inline: 24px;
+
+            font-size: clamp(0.46rem, 1.5vw, 0.58rem);
+
+            letter-spacing: 0.24em;
+
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.22);
+
+            color: rgba(255, 255, 255, 0.18);
         }
 
         @keyframes rotate {
@@ -246,12 +301,45 @@
         @keyframes fadeUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(16px);
             }
 
             to {
                 opacity: 1;
                 transform: translateY(0px);
+            }
+        }
+
+        @media (max-width: 640px) {
+
+            .grid {
+                background-size: 42px 42px;
+                opacity: 0.32;
+            }
+
+            .orbital {
+                width: 92vw;
+                height: 92vw;
+
+                opacity: 0.7;
+            }
+
+            .node {
+                transform: scale(0.9);
+            }
+
+            .hero {
+                gap: 16px;
+            }
+
+            .mark {
+                width: 56px;
+                height: 56px;
+            }
+
+            .footer {
+                bottom: 20px;
+                line-height: 1.8;
             }
         }
     </style>
@@ -261,7 +349,7 @@
 
     <div class="grid"></div>
 
-    <div class="network">
+    <div class="orbital">
         <div class="node n1"></div>
         <div class="node n2"></div>
         <div class="node n3"></div>
@@ -274,7 +362,9 @@
             <span>AL</span>
         </div>
 
-        <h1>ASHER <strong>LABS</strong></h1>
+        <h1>
+            ASHER <strong>LABS</strong>
+        </h1>
 
         <p>
             Infrastructure • Automation • Systems
