@@ -1,0 +1,99 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="asherGradient" x1="120" y1="120" x2="392" y2="392" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00DFD8" />
+      <stop offset="100%" stop-color="#007CF0" />
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="96" fill="#050505"/>
+
+  <!-- Outer structure: four sides split with gaps at midpoints and rounded corners -->
+  <!-- Top: left segment -->
+  <path d="M156 136 H210"
+        stroke="url(#asherGradient)" stroke-width="5" stroke-linecap="round"
+        stroke-linejoin="round" fill="none"/>
+  <!-- Top: right segment -->
+  <path d="M302 136 H356"
+        stroke="url(#asherGradient)" stroke-width="5" stroke-linecap="round"
+        stroke-linejoin="round" fill="none"/>
+
+  <!-- Right: top segment -->
+  <path d="M376 156 V210"
+        stroke="url(#asherGradient)" stroke-width="5" stroke-linecap="round"
+        stroke-linejoin="round" fill="none"/>
+  <!-- Right: bottom segment -->
+  <path d="M376 302 V356"
+        stroke="url(#asherGradient)" stroke-width="5" stroke-linecap="round"
+        stroke-linejoin="round" fill="none"/>
+
+  <!-- Bottom: right segment -->
+  <path d="M356 376 H302"
+        stroke="url(#asherGradient)" stroke-width="5" stroke-linecap="round"
+        stroke-linejoin="round" fill="none"/>
+  <!-- Bottom: left segment -->
+  <path d="M210 376 H156"
+        stroke="url(#asherGradient)" stroke-width="5" stroke-linecap="round"
+        stroke-linejoin="round" fill="none"/>
+
+  <!-- Left: bottom segment -->
+  <path d="M136 356 V302"
+        stroke="url(#asherGradient)" stroke-width="5" stroke-linecap="round"
+        stroke-linejoin="round" fill="none"/>
+  <!-- Left: top segment -->
+  <path d="M136 220 V156"
+        stroke="url(#asherGradient)" stroke-width="5" stroke-linecap="round"
+        stroke-linejoin="round" fill="none"/>
+
+  <!-- Corner arcs (rounded corners) -->
+  <path d="M156 136 A20 20 0 0 0 136 156"
+        stroke="url(#asherGradient)" stroke-width="5" stroke-linecap="round"
+        stroke-linejoin="round" fill="none"/>
+  <path d="M356 136 A20 20 0 0 1 376 156"
+        stroke="url(#asherGradient)" stroke-width="5" stroke-linecap="round"
+        stroke-linejoin="round" fill="none"/>
+  <path d="M376 356 A20 20 0 0 1 356 376"
+        stroke="url(#asherGradient)" stroke-width="5" stroke-linecap="round"
+        stroke-linejoin="round" fill="none"/>
+      <path d="M156 376 A20 20 0 0 1 136 356"
+        stroke="url(#asherGradient)" stroke-width="5" stroke-linecap="round"
+        stroke-linejoin="round" fill="none"/>
+
+  <!-- Core -->
+  <rect x="196" y="196" width="120" height="120" rx="32"
+        fill="url(#asherGradient)"/>
+
+  <!-- Connection nodes -->
+  <rect x="242" y="132" width="28" height="28" rx="6"
+        fill="#00DFD8"/>
+
+  <rect x="352" y="242" width="28" height="28" rx="6"
+        fill="#007CF0"/>
+
+  <rect x="242" y="352" width="28" height="28" rx="6"
+        fill="#00DFD8"/>
+
+  <rect x="132" y="242" width="28" height="28" rx="6"
+        fill="#007CF0"/>
+
+  <!-- Connection bridges -->
+  <path d="M256 168V186"
+        stroke="#8EEBFF"
+        stroke-width="10"
+        stroke-linecap="round"/>
+
+  <path d="M326 256H344"
+        stroke="#8EEBFF"
+        stroke-width="10"
+        stroke-linecap="round"/>
+
+  <path d="M256 326V344"
+        stroke="#8EEBFF"
+        stroke-width="10"
+        stroke-linecap="round"/>
+
+  <path d="M168 256H186"
+        stroke="#8EEBFF"
+        stroke-width="10"
+        stroke-linecap="round"/>
+</svg>

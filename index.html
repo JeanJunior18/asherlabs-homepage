@@ -7,6 +7,13 @@
 
     <title>ASHER LABS</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
     <style>
         * {
             margin: 0;
@@ -44,12 +51,7 @@
 
                 var(--bg);
 
-            font-family:
-                Inter,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                sans-serif;
+            font-family: "Inter", sans-serif;
 
             display: flex;
             align-items: center;
@@ -58,7 +60,6 @@
             position: relative;
         }
 
-        /* subtle grain */
         body::before {
             content: "";
 
@@ -77,7 +78,6 @@
             pointer-events: none;
         }
 
-        /* grid */
         .grid {
             position: absolute;
             inset: 0;
@@ -96,83 +96,6 @@
             opacity: 0.45;
         }
 
-        /* orbital structure */
-        .orbital {
-            position: absolute;
-
-            width: min(82vw, 560px);
-            height: min(82vw, 560px);
-
-            border-radius: 50%;
-
-            border: 1px solid rgba(255, 255, 255, 0.03);
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            animation: rotate 90s linear infinite;
-        }
-
-        .orbital::before,
-        .orbital::after {
-            content: "";
-
-            position: absolute;
-            border-radius: 50%;
-
-            border: 1px solid rgba(255, 255, 255, 0.035);
-        }
-
-        .orbital::before {
-            width: 68%;
-            height: 68%;
-        }
-
-        .orbital::after {
-            width: 34%;
-            height: 34%;
-        }
-
-        /* nodes */
-        .node {
-            position: absolute;
-
-            width: 7px;
-            height: 7px;
-
-            border-radius: 50%;
-
-            background: white;
-
-            box-shadow:
-                0 0 12px rgba(255, 255, 255, 0.25),
-                0 0 26px rgba(0, 223, 216, 0.12);
-        }
-
-        .n1 {
-            top: 24%;
-            left: 18%;
-        }
-
-        .n2 {
-            top: 44%;
-            right: 17%;
-            background: var(--cyan);
-        }
-
-        .n3 {
-            bottom: 22%;
-            left: 31%;
-            background: var(--blue);
-        }
-
-        .n4 {
-            bottom: 12%;
-            right: 32%;
-        }
-
-        /* hero */
         .hero {
             position: relative;
             z-index: 10;
@@ -181,65 +104,31 @@
             flex-direction: column;
             align-items: center;
 
-            gap: 18px;
+            gap: 28px;
 
             padding-inline: 24px;
 
             text-align: center;
-
-            animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* minimal mark */
-        .mark {
-            width: 62px;
-            height: 62px;
+        .logo {
+            width: 92px;
+            height: 92px;
 
-            border-radius: 18px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            position: relative;
-
-            overflow: hidden;
-
-            background:
-                linear-gradient(135deg,
-                    rgba(0, 223, 216, 0.08),
-                    rgba(0, 124, 240, 0.08));
-
-            border:
-                1px solid rgba(255, 255, 255, 0.06);
-
-            backdrop-filter: blur(20px);
-
-            box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, 0.03),
-                0 0 30px rgba(0, 223, 216, 0.06);
-        }
-
-        .mark span {
-            font-size: 0.9rem;
-
-            font-weight: 600;
-
-            letter-spacing: 0.18em;
-
-            color: rgba(255, 255, 255, 0.92);
+            filter:
+                drop-shadow(0 0 30px rgba(0, 223, 216, 0.08));
         }
 
         h1 {
-            font-size: clamp(0.72rem, 2vw, 0.95rem);
+            font-size: clamp(0.82rem, 2vw, 1rem);
 
             font-weight: 300;
 
             text-transform: uppercase;
 
-            letter-spacing: clamp(0.32em, 1.6vw, 0.58em);
+            letter-spacing: clamp(0.42em, 1.6vw, 0.62em);
 
-            text-indent: clamp(0.32em, 1.6vw, 0.58em);
+            text-indent: clamp(0.42em, 1.6vw, 0.62em);
 
             color: white;
         }
@@ -257,11 +146,11 @@
         }
 
         p {
-            font-size: clamp(0.52rem, 1.7vw, 0.68rem);
+            font-size: clamp(0.56rem, 1.7vw, 0.72rem);
 
             text-transform: uppercase;
 
-            letter-spacing: clamp(0.18em, 0.8vw, 0.28em);
+            letter-spacing: clamp(0.22em, 0.8vw, 0.32em);
 
             color: var(--muted);
 
@@ -271,7 +160,7 @@
         .footer {
             position: absolute;
 
-            bottom: 26px;
+            bottom: 28px;
 
             width: 100%;
 
@@ -288,28 +177,6 @@
             color: rgba(255, 255, 255, 0.18);
         }
 
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(16px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0px);
-            }
-        }
-
         @media (max-width: 640px) {
 
             .grid {
@@ -317,29 +184,13 @@
                 opacity: 0.32;
             }
 
-            .orbital {
-                width: 92vw;
-                height: 92vw;
-
-                opacity: 0.7;
-            }
-
-            .node {
-                transform: scale(0.9);
-            }
-
             .hero {
-                gap: 16px;
+                gap: 22px;
             }
 
-            .mark {
-                width: 56px;
-                height: 56px;
-            }
-
-            .footer {
-                bottom: 20px;
-                line-height: 1.8;
+            .logo {
+                width: 78px;
+                height: 78px;
             }
         }
     </style>
@@ -349,18 +200,9 @@
 
     <div class="grid"></div>
 
-    <div class="orbital">
-        <div class="node n1"></div>
-        <div class="node n2"></div>
-        <div class="node n3"></div>
-        <div class="node n4"></div>
-    </div>
-
     <main class="hero">
 
-        <div class="mark">
-            <span>AL</span>
-        </div>
+        <img src="logo.svg" alt="ASHER LABS" class="logo">
 
         <h1>
             ASHER <strong>LABS</strong>
